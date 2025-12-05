@@ -105,7 +105,7 @@ const filterMovies = async ({ genreIds = [], sortBy = 'popularity.desc', page = 
         // Gabungkan ID genre menjadi string (misalnya '28,12')
         const genreString = genreIds.join(','); 
         
-        let url = `${TMDB_URL}/discover/movie?language=en-US`;
+        let url = `${TMDB_URL}/discover/movie?language=en-US&page=10`;
         url += `&sort_by=${sortBy}`;
         url += `&page=${page}`;
         

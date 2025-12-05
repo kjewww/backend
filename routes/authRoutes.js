@@ -7,11 +7,11 @@ router.post('/register', authController.registerUser); // create
 router.post('/login', authController.loginUser);
 router.get('/users', authController.getAllUser); // get all users (no auth)
 router.get('/profile', protect, (req, res) => { // read
-    res.json({
+    res.status(200).json({
         message: `akses berhasil untuk user iD: ${req.userId}`,
-        id: req.user.id,
-        username: req.user.username,
-        displayName: req.user.display_name
+        id: req.userId,
+        username: req.username,
+        displayName: req.displayName
     });
 });
 router.put('/update-display', protect, authController.updateUserDisplay); // update
