@@ -35,7 +35,10 @@ try {
 const getAllList = async (req, res) => {
 try {
     const userId = req.userId;
-    const lists = await listModel.getAllListsByUserId(userId);
+    // support ?include=movies to include movie objects per list
+    const include = req.query.include;
+    const includeMovies = include === 'movies';
+    const lists = await listModel.getAllListsByUserId(userId, includeMovies);
     res.status(200).json({
     success: true,
     data: lists,

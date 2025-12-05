@@ -1,9 +1,11 @@
 const ratingModel = require('../models/ratingModel');
 
 const createRating = async (req, res) => {
-    const { tmdbId, userId, score, reviewText, title, release_year, poster_path } = req.body; 
+    // const { tmdbId, userId, score, reviewText, title, release_year, poster_path } = req.body; 
+    const { tmdbId, userId, score, reviewText } = req.body; 
 
-    if (!tmdbId || !userId || score == null || !title) {
+
+    if (!tmdbId || !userId || score == null) {
         return res.status(400).json({ 
             message: "Data yang dibutuhkan (tmdbId, userId, score, title) tidak lengkap." 
         });
@@ -16,9 +18,9 @@ const createRating = async (req, res) => {
         userId: userId, 
         score: validScore,
         reviewText: reviewText,
-        title: title, 
-        release_year: release_year, 
-        poster_path: poster_path 
+        // title: title, 
+        // release_year: release_year, 
+        // poster_path: poster_path 
     };
 
     try {
@@ -40,7 +42,7 @@ const createRating = async (req, res) => {
 };
 
 const getAllRating = async (res) => {
-    
+
 }
 
 const updateRating = async (req, res) => {

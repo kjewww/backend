@@ -52,7 +52,7 @@ const loginUser = async (req, res) =>
         const user = await userModel.getUserByUsername(username);
         if (user && (await userModel.comparePassword(password, user.password_hash)))
         {
-            res.json({
+            res.status(200).json({
                 id: user.id,
                 username: user.username,
                 displayName: user.display_name,
